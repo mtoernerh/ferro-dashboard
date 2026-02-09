@@ -1,0 +1,38 @@
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: Arial, sans-serif;
+}
+
+h2 {
+    color: #ffffff !important;
+}
+
+#lake-selector .Select-input input {
+    color: #ffffff !important;
+    caret-color: #ffffff;
+}
+
+.Select-control,
+.Select-menu-outer {
+    background-color: #1e1e1e !important;
+    color: #ffffff !important;
+}
+
+.Select-placeholder,
+.Select-value-label {
+    color: #cccccc !important;
+}
+
+.Select-option {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+.Select-option.is-focused {
+    background-color: #323232;
+}
+
+.leaflet-popup-content-wrapper {
+background-color: rgba(255, 255, 255, 0.8) !important; 
+}

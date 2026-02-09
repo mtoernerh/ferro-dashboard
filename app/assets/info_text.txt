@@ -1,0 +1,4 @@
+FERRO is an interdisciplinary project that seeks to foster circularly based management of eutrophication. 
+It integrates a wide array of fields: hydrobiology, remote sensing, biotechnology, engineering and agriculture to facilitate lake restoration efforts in Europe.
+FERRO will provide the research and conservation community with new tools and methodologies for lake nutrient recovery and reuse in agriculture, 
+as well as help in the identification and prioritisation of lakes for restoration.

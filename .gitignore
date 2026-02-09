@@ -1,0 +1,4 @@
+.env
+*.geojson
+*.parquet
+*.2do

@@ -1,0 +1,12 @@
+name: ferro-dashboard
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - dash-leaflet
+  - dash
+  - pyproj
+  - pandas
+  - shapely
+  - geopandas
+  - plotly
