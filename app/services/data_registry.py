@@ -46,6 +46,23 @@ def load_lakes(path):
 
     with open(path, encoding="utf-8") as f:
         return json.load(f)
+    
+
+def load_lake_lookup(path):
+    url = (
+        "https://huggingface.co/datasets/mfth/ferro-dashboard/"
+        "resolve/main/lakes.geojson"
+    )
+
+    path = ensure_file(path, url)
+
+    with open(path, encoding="utf-8") as f:
+        geojson = json.load(f)
+
+    return {
+        feature["properties"]["id"]: feature 
+        for feature in geojson["features"]
+    }
 
 def load_attributes(path):
     url = (

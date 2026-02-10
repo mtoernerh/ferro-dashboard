@@ -2,28 +2,16 @@
 from shapely.geometry import shape
 from shapely.ops import transform
 
-def find_lake_feature(triggered_id, click_data, selected_id, lakes_geojson):
+def find_lake_feature(triggered_id, click_data, selected_id, lakes_lookup):
 
     if triggered_id == "lake-selector" and selected_id:
-        return next(
-            (
-                f for f in lakes_geojson["features"]
-                if f.get("properties", {}).get("id") == selected_id
-            ),
-            None,
-        )
+        return lakes_lookup.get(triggered_id)
 
     if triggered_id == "lakes" and click_data:
         props = click_data.get("properties", {})
         lake_id = props.get("id") or props.get("id_str")
 
-        return next(
-            (
-                f for f in lakes_geojson["features"]
-                if f.get("properties", {}).get("id") == lake_id
-            ),
-            None,
-        )
+        return lakes_lookup.get(lake_id)
 
     return None
 

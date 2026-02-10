@@ -27,14 +27,8 @@ def register_catchment_callbacks(app):
         data = get_app_data()
 
         lake_id  = click_data["properties"]["id"]
-
-        lake_feature = next(
-            (
-                f for f in  data["lakes_geojson"]["features"]
-                if f.get("properties", {}).get("id") == lake_id
-                ),
-            None,
-        )
+        
+        lake_feature = data["lakes_lookup"].get(lake_id)
         
         (
             lake_id,

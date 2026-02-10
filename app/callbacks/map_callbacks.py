@@ -30,7 +30,7 @@ def register_map_callbacks(app):
             triggered,
             click_data,
             selected_id,
-            data["lakes_geojson"],
+            data["lakes_lookup"],
         )
 
         if not lake_feature:
