@@ -15,7 +15,6 @@ def find_lake_feature(triggered_id, click_data, selected_id, lakes_lookup):
 
     return None
 
-
 def compute_lake_metrics(lake_feature, catchment_by_id, crs):
 
     lake_id = lake_feature["properties"].get("id")
