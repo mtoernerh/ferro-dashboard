@@ -1,41 +1,41 @@
-from dash import Output, Input, no_update, ctx
-import dash_leaflet as dl
+from dash import ctx, no_update, Input, Output
 from pyproj import Transformer
+import dash_leaflet as dl
 
 from app.services.lake_selection import (
-    find_lake_feature,
     compute_lake_metrics,
-    build_viewport,
 )
 from app.components.popup import build_popup
 from app.services.figures import generate_lake_sunburst
 from app.services.app_data import get_app_data
 
-def register_map_callbacks(app):
+def register_catchment_callbacks(app):
 
     @app.callback(
         Output("selected-catchment", "children", allow_duplicate=True),
-        Output("map", "viewport"),
-        Input("lakes", "clickData"),
-        Input("lake-selector", "value"),
+        Input("catchments", "clickData"),
         prevent_initial_call=True,
     )
-    def update_on_click_or_dropdown(click_data, selected_id):
-        project = Transformer.from_crs("EPSG:4326", "EPSG:25832", always_xy=True).transform
+    def update_on_catchment_click(click_data):
+        if not click_data:
+            return no_update
+
+        project = Transformer.from_crs(
+            "EPSG:4326", "EPSG:25832", always_xy=True
+        ).transform
+
         data = get_app_data()
 
-        triggered = ctx.triggered_id
+        lake_id  = click_data["properties"]["id"]
 
-        lake_feature = find_lake_feature(
-            triggered,
-            click_data,
-            selected_id,
-            data["lakes_geojson"],
+        lake_feature = next(
+            (
+                f for f in  data["lakes_geojson"]["features"]
+                if f.get("properties", {}).get("id") == lake_id
+                ),
+            None,
         )
-
-        if not lake_feature:
-            return no_update, no_update
-
+        
         (
             lake_id,
             lake_name,
@@ -55,11 +55,19 @@ def register_map_callbacks(app):
         )
 
         fig = generate_lake_sunburst(attributes_sel_df, classes_sel_dict)
-        popup = build_popup(lake_id, lake_name, lake_area, catchment_area, lake_centroid, fig)
+
+        popup = build_popup(
+            lake_id,
+            lake_name,
+            lake_area,
+            catchment_area,
+            lake_centroid,
+            fig,
+        )
+
         map_layers = [popup]
 
-        if catchment_feature:
-            map_layers.append(
+        map_layers.append(
                 dl.GeoJSON(
                     id = "catchments",
                     data={
@@ -70,6 +78,7 @@ def register_map_callbacks(app):
                 )
             )
 
-        viewport = build_viewport(catchment_feature)
-
-        return map_layers, viewport
+        # IMPORTANT:
+        # - Do NOT add GeoJSON
+        # - Do NOT update viewport
+        return map_layers

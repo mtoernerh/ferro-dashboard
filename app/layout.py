@@ -41,7 +41,10 @@ def layout():
 
         # --- 3. Main Content Area (Map) ---
         html.Div([
-            create_map(),
+            html.Div(
+                id="map-content-container", 
+                style={"height": "100%", "width": "100%", "position": "absolute", "top": 0, "left": 0}
+            ),
             create_info_button(),
             create_legend()
         ], style={"flex": "1", "position": "relative", "overflow": "hidden"}), 
