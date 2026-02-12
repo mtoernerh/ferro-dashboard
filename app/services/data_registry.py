@@ -60,7 +60,7 @@ def load_lake_lookup(path):
         geojson = json.load(f)
 
     return {
-        feature["properties"]["id"]: feature 
+        feature["properties"]["id_str"]: feature 
         for feature in geojson["features"]
     }
 

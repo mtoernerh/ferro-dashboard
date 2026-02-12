@@ -9,7 +9,7 @@ def create_dropdown():
                 options=[
                 {
                         "label": f["properties"]["Name"],
-                        "value": f["properties"]["id"]
+                        "value": f["properties"]["id_str"]
                     }
                     for f in data["lakes_geojson"]["features"]
                 ],

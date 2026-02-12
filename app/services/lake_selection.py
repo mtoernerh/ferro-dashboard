@@ -5,11 +5,11 @@ from shapely.ops import transform
 def find_lake_feature(triggered_id, click_data, selected_id, lakes_lookup):
 
     if triggered_id == "lake-selector" and selected_id:
-        return lakes_lookup.get(triggered_id)
+        return lakes_lookup.get(selected_id)
 
     if triggered_id == "lakes" and click_data:
         props = click_data.get("properties", {})
-        lake_id = props.get("id") or props.get("id_str")
+        lake_id = props.get("id_str")
 
         return lakes_lookup.get(lake_id)
 
@@ -17,7 +17,7 @@ def find_lake_feature(triggered_id, click_data, selected_id, lakes_lookup):
 
 def compute_lake_metrics(lake_feature, catchment_by_id, crs):
 
-    lake_id = lake_feature["properties"].get("id")
+    lake_id = lake_feature["properties"].get("id_str")
     lake_name = lake_feature["properties"].get("Name", "Unknown Lake")
     lake_geom = shape(lake_feature["geometry"])
     lake_centroid = lake_geom.centroid
