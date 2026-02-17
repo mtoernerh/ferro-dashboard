@@ -68,11 +68,8 @@ def register_catchment_callbacks(app):
                         "type": "FeatureCollection",
                         "features": [catchment_feature],
                     },
-                    options={"style": {"color": "green", "fillOpacity": 0.3}, "interactive": True},
+                    options={"style": {"color": "#b3b3b", "fillOpacity": 0.3}, "interactive": True},
                 )
             )
-
-        # IMPORTANT:
-        # - Do NOT add GeoJSON
-        # - Do NOT update viewport
+        
         return map_layers

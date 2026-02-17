@@ -21,8 +21,10 @@ Editorial responsibility: Dr Carsten Brockmann
 Consumer dispute resolution/universal arbitration board:
 We are not willing or obliged to participate in dispute resolution proceedings before a consumer arbitration board.
 
-This web page was developed with funding support from OderSO (IGB) contract n° XY.
-It contains image material from Brockmann Consult GmbH, which was created using satellite data from ESA and NASA.
+This web page was developed with funding from the European Union’s Horizon Europe research and innovation programme under grant agreement No. 101157743. Views and
+opinions expressed are those of the author(s) only and do not necessarily reflect those of the European Union or the European Climate, Infrastructure and
+Environment Executive Agency (CINEA). Neither the EU nor CINEA can be held responsible for them.
+The site contains image material from Brockmann Consult GmbH, which was created using satellite data from ESA and NASA.
 
 ---  
 **Impressum**

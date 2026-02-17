@@ -10,12 +10,24 @@ def create_legend():
             children=[
                 html.H4("Legend", style={"marginBottom": "10px", "color": "white", "marginTop": "0"}),
                 html.Div([
-                    html.Div(style={"backgroundColor": "#3388ff", "width": "20px", "height": "20px", "display": "inline-block", "marginRight": "10px"}),
-                    html.Span("Lakes", style={"color": "white"})
+                    html.Div(style={"backgroundColor": "#b3b3b3", "width": "20px", "height": "20px", "display": "inline-block", "marginRight": "10px"}),
+                    html.Span("Catchments", style={"color": "white"})
                 ], style={"marginBottom": "5px"}),
                 html.Div([
-                    html.Div(style={"backgroundColor": "#33ff88", "width": "20px", "height": "20px", "display": "inline-block", "marginRight": "10px"}),
-                    html.Span("Catchments", style={"color": "white"})
+                    html.Div(style={"backgroundColor": "#00B0F0", "width": "20px", "height": "20px", "display": "inline-block", "marginRight": "10px"}),
+                   html.Span("Lake Type 1 – Relatively low eutrophication risk")
+                ], style={"marginBottom": "5px"}),
+                html.Div([
+                    html.Div(style={"backgroundColor": "#92D050", "width": "20px", "height": "20px", "display": "inline-block", "marginRight": "10px"}),
+                    html.Span("Lake Type 2 – Moderate eutrophication risk")
+                ], style={"marginBottom": "5px"}),
+                html.Div([
+                    html.Div(style={"backgroundColor": "#FFFF00", "width": "20px", "height": "20px", "display": "inline-block", "marginRight": "10px"}),
+                    html.Span("Lake Type 3 – Risk strongly dependent on drainage basin changes")
+                ], style={"marginBottom": "5px"}),
+                html.Div([
+                    html.Div(style={"backgroundColor": "#FF0000", "width": "20px", "height": "20px", "display": "inline-block", "marginRight": "10px"}),
+                    html.Span("Lake Type 4 – High eutrophication risk")
                 ])
             ],
             style={

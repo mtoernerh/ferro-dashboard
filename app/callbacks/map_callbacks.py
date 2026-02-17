@@ -66,7 +66,7 @@ def register_map_callbacks(app):
                         "type": "FeatureCollection",
                         "features": [catchment_feature],
                     },
-                    options={"style": {"color": "green", "fillOpacity": 0.3}, "interactive": True},
+                    options={"style": {"color": "#b3b3b", "fillOpacity": 0.3}, "interactive": True},
                 )
             )
 

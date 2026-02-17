@@ -20,7 +20,57 @@ def build_popup(lake_id, lake_name, lake_area, catchment_area, lake_centroid, fi
                         }
                     ),
 
-                    html.Hr(style={"border": "0.5px solid #eee"}),
+                   html.Div([
+                    html.Div([
+                        html.Span(style={
+                            "display": "inline-block",
+                            "width": "14px",
+                            "height": "14px",
+                            "backgroundColor": "#00B0F0",
+                            "marginRight": "8px"
+                        }),
+                        html.Span("Type 1 – Relatively low eutrophication risk")
+                    ], style={"marginBottom": "4px"}),
+
+                    html.Div([
+                        html.Span(style={
+                            "display": "inline-block",
+                            "width": "14px",
+                            "height": "14px",
+                            "backgroundColor": "#92D050",
+                            "marginRight": "8px"
+                        }),
+                        html.Span("Type 2 – Moderate eutrophication risk")
+                    ], style={"marginBottom": "4px"}),
+
+                    html.Div([
+                        html.Span(style={
+                            "display": "inline-block",
+                            "width": "14px",
+                            "height": "14px",
+                            "backgroundColor": "#FFFF00",
+                            "marginRight": "8px"
+                        }),
+                        html.Span("Type 3 – Risk strongly dependent on drainage basin changes")
+                    ], style={"marginBottom": "4px"}),
+
+                    html.Div([
+                        html.Span(style={
+                            "display": "inline-block",
+                            "width": "14px",
+                            "height": "14px",
+                            "backgroundColor": "#FF0000",
+                            "marginRight": "8px"
+                        }),
+                        html.Span("Type 4 – High eutrophication risk")
+                    ])
+                ], style={
+                    "fontSize": "13px",
+                    "marginBottom": "10px"
+                }),
+                # -----------------
+
+                html.Hr(style={"border": "0.5px solid #eee"}),
 
                     html.P([
                         html.B("ID: "), f"{lake_id}", html.Br(),

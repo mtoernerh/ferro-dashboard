@@ -40,8 +40,10 @@ def create_info_modal():
         children=[
             html.Div(style=modal_content_style, children=[
                 html.Button("X", id="close-info", n_clicks=0, style={"float": "right", "background": "none", "border": "none", "color": "white", "fontSize": "20px", "cursor": "pointer"}),
-                html.H3("Project Information"),
-                html.P(paragraphs),
+                dcc.Markdown(
+                        paragraphs,
+                        style={"whiteSpace": "pre-wrap", "color": "white"}  # preserves line breaks
+                    ),
 
             ])
         ]
