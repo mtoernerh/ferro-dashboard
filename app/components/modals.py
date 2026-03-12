@@ -25,7 +25,6 @@ def load_text_file(filename):
     paragraphs = [p.strip() for p in text.split("\n\n") if p.strip()]
     return paragraphs
 
-
 def load_text_file(filename):
     """Load a text file from assets and return as string"""
     file_path = os.path.join(ASSETS_PATH, filename)

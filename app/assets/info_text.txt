@@ -1,19 +1,19 @@
 # About FERRO
-
-FERRO is an interdisciplinary research and innovation project dedicated to advancing circular management approaches to eutrophication in European lakes. The project brings together expertise from hydrobiology, remote sensing, biotechnology, engineering, and agriculture to develop integrated solutions that support sustainable lake restoration. By linking ecological understanding with technological innovation, FERRO aims to close nutrient cycles and promote environmentally responsible resource management.
+  
+The Horizon Europe [FERRO project](https://ferroproject.eu/) (grant agreement No. 101157743) is an interdisciplinary research and innovation project dedicated to advancing circular management approaches to eutrophication in European lakes. The project brings together expertise from hydrobiology, remote sensing, biotechnology, engineering, and agriculture to develop integrated solutions that support sustainable lake restoration. By linking ecological understanding with technological innovation, FERRO aims to close nutrient cycles and promote environmentally responsible resource management.
 ___
 # Project Objectives
-
-FERRO develops new tools and methodologies that enable nutrient recovery from lakes and support their reuse in agricultural systems, thereby contributing to circular economy principles. At the same time, the project provides a scientific basis for identifying and prioritising lakes for restoration by combining catchment characteristics, water quality indicators, and Earth observation data. Through scalable and transferable solutions, FERRO supports researchers, environmental managers, and policy makers in making informed decisions for long-term freshwater protection.
+  
+FERRO develops new tools and methodologies that enable nutrient recovery from lakes and support their reuse in agricultural systems, thereby contributing to circular economy principles. At the same time, the project provides a scientific basis for identifying and prioritising lakes for restoration by combining catchment characteristics, water quality indicators, and Earth observation data. 
 ___
-# Catchment & Water Quality Classification (WP4)
-
-Led by Brockmann Consult, Work Package 4 (WP4) delivers catchment-related and water quality information derived from satellite observations to support both restoration prioritisation and long-term monitoring. A dedicated lake classification scheme, adapted from the framework proposed by Politi et al. (2024), is implemented to assess the natural sensitivity and resilience of lakes to eutrophication. The approach integrates multiple lake and catchment metrics derived from remotely sensed, modelled, and open-access datasets, enabling consistent large-scale assessment even in regions where in situ data are limited. By combining explanatory variables into a harmonised framework, the classification supports customisation to regional contexts while remaining transferable to other geographic areas. Independent satellite-based water quality assessments demonstrate that lakes identified as having higher eutrophication risk typically exhibit elevated chlorophyll-a concentrations, reinforcing the robustness of the approach.
+# Lake & Catchment Classification 
+  
+Led by Brockmann Consult, a dedicated lake classification scheme, adapted from the framework proposed by Politi et al. (2024), is implemented to assess the inherent sensitivity and natural resilience of lakes to eutrophication. The approach integrates multiple lake and catchment metrics derived from remotely sensed, modelled, and open-access datasets, enabling consistent large-scale assessment even in regions where in situ data are limited. By combining explanatory variables into a harmonised framework, the classification supports customisation to regional contexts while remaining transferable to other geographic areas. 
 ___
 # Why This Matters
-
+  
 Lake ecosystems respond differently to anthropogenic pressures and climate change depending on their inherent characteristics and catchment dynamics. Understanding the natural sensitivity and resilience of each lake provides a reference for anticipating how quickly eutrophication may develop under increasing external pressures. Such knowledge allows for targeted monitoring of more vulnerable systems, early detection of ecological deterioration, and more efficient allocation of restoration resources. By enabling systematic, large-scale risk assessment, this framework contributes to safeguarding freshwater ecosystems and supporting sustainable environmental management.
 ___
-# This Dashboard
-
-This interactive dashboard visualises lakes, their contributing catchments, and their eutrophication classification based on remote sensing–derived indicators and catchment metrics. It supports restoration planning by enabling comparison between lakes and tracking of ecological change over time.
+# This Tool
+  
+This interactive tool visualises lakes, their contributing catchments, and their eutrophication risk classification score based on the FERRO lake classification framework. It supports restoration planning by enabling comparison between water bodies, ensuring that those with higher risk for eutrophication, and the attributes that contribute to this, can be quickly identified.
