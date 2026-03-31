@@ -5,8 +5,11 @@ dependencies:
   - python=3.11
   - dash-leaflet
   - dash
+  - dash-extensions
   - pyproj
   - pandas
   - shapely
   - geopandas
+  - pyarrow
   - plotly
+  - waitress

@@ -1,44 +1,33 @@
 from dash import html
 
 def create_legend_button():
-    return html.Button("Show Legend", id="legend-toggle", n_clicks=0,
-                    style={"whiteSpace": "nowrap", "padding": "5px 15px", "cursor": "pointer", "width": "170px"})
+    return html.Button(
+        "Hide Legend",
+        id="legend-toggle",
+        n_clicks=0,
+        className="legend-toggle-btn"
+    )
 
 def create_legend():
+    legend_item = lambda color, label: html.Div([
+        html.Div(style={
+            "backgroundColor": color,
+            "width": "10px", "height": "10px",
+            "display": "inline-block", "marginRight": "8px",
+            "flexShrink": "0"
+        }),
+        html.Span(label, style={"color": "white", "fontSize": "10px"})
+    ], style={"marginBottom": "4px", "display": "flex", "alignItems": "center"})
+
     return html.Div(
-            id="legend",
-            children=[
-                html.H4("Legend", style={"marginBottom": "10px", "color": "white", "marginTop": "0"}),
-                html.Div([
-                    html.Div(style={"backgroundColor": "#b3b3b3", "width": "20px", "height": "20px", "display": "inline-block", "marginRight": "10px"}),
-                    html.Span("Catchments", style={"color": "white"})
-                ], style={"marginBottom": "5px"}),
-                html.Div([
-                    html.Div(style={"backgroundColor": "#00B0F0", "width": "20px", "height": "20px", "display": "inline-block", "marginRight": "10px"}),
-                   html.Span("Lake Type 1 – Relatively low eutrophication risk")
-                ], style={"marginBottom": "5px"}),
-                html.Div([
-                    html.Div(style={"backgroundColor": "#92D050", "width": "20px", "height": "20px", "display": "inline-block", "marginRight": "10px"}),
-                    html.Span("Lake Type 2 – Moderate eutrophication risk")
-                ], style={"marginBottom": "5px"}),
-                html.Div([
-                    html.Div(style={"backgroundColor": "#FFFF00", "width": "20px", "height": "20px", "display": "inline-block", "marginRight": "10px"}),
-                    html.Span("Lake Type 3 – Risk strongly dependent on drainage basin changes")
-                ], style={"marginBottom": "5px"}),
-                html.Div([
-                    html.Div(style={"backgroundColor": "#FF0000", "width": "20px", "height": "20px", "display": "inline-block", "marginRight": "10px"}),
-                    html.Span("Lake Type 4 – High eutrophication risk")
-                ])
-            ],
-            style={
-                "backgroundColor": "rgba(34, 34, 34, 0.9)", # Slightly transparent background
-                "padding": "15px", 
-                "borderRadius": "8px",
-                "position": "absolute", 
-                "top": "20px",    # 20px from the top of the MAP (not the screen)
-                "right": "20px", 
-                "zIndex": "1000",
-                "display": "none", 
-                "boxShadow": "0 0 10px rgba(0,0,0,0.5)"
-            }
-        )
+        id="legend",
+        className="legend-container",
+        children=[
+            html.H4("Legend", style={"marginBottom": "8px", "color": "white", "marginTop": "0", "fontSize": "10px"}),
+            legend_item("#b3b3b3", "Catchments"),
+            legend_item("#00B0F0", "Lake Type 1 – Relatively low eutrophication risk"),
+            legend_item("#92D050", "Lake Type 2 – Moderate eutrophication risk"),
+            legend_item("#FFFF00", "Lake Type 3 – Risk strongly dependent on drainage basin changes"),
+            legend_item("#FF0000", "Lake Type 4 – High eutrophication risk"),
+        ]
+    )

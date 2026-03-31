@@ -1,4 +1,4 @@
-from dash import ctx, no_update, Input, Output
+from dash import no_update, Input, Output
 from pyproj import Transformer
 import dash_leaflet as dl
 

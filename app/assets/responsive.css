@@ -1,0 +1,251 @@
+/* ============================================================
+   HEADER
+   ============================================================ */
+.header-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    flex: 0 0 auto;
+    gap: 12px;
+    border-bottom: 1px solid #333;
+    background-color: #121212;
+    min-height: 56px;
+}
+
+.header-brand {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    flex-shrink: 0;
+}
+
+.header-logo {
+    height: 60px;
+    margin-right: 10px;
+}
+
+.header-title {
+    color: white;
+    margin: 0;
+    font-size: 22px;
+    white-space: nowrap;
+}
+
+.header-dropdown {
+    flex: 1;
+    max-width: 500px;
+    min-width: 0;       
+    margin: 0 20px;
+}
+
+.legend-toggle-btn {
+    white-space: nowrap;
+    padding: 5px 15px;
+    cursor: pointer;
+    width: 170px;
+    flex-shrink: 0;
+}
+
+/* ============================================================
+   MAP OVERLAYS — legend + info button
+   ============================================================ */
+.legend-container {
+    background-color: rgba(34, 34, 34, 0.9);
+    padding: 10px 12px;
+    border-radius: 8px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: none;           /* toggled by callback */
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    max-width: calc(100vw - 40px); 
+}
+
+.info-button {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1001;
+    height: 35px;
+    cursor: pointer;
+}
+
+/* ============================================================
+   POPUP
+   ============================================================ */
+.popup-content {
+    min-width: 320px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer-bar {
+    color: #888;
+    padding: 15px 30px;
+    font-size: 13px;
+    background-color: #121212;
+    border-top: 1px solid #333;
+    flex: 0 1 auto;
+}
+
+.footer-inner {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+}
+
+.footer-eu {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    border-radius: 6px;
+    max-width: 600px;
+}
+
+.footer-eu-logo {
+    height: 45px;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.footer-eu-text {
+    font-size: 6px;
+    color: #aaa;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.footer-links {
+    text-align: center;
+    white-space: nowrap;
+}
+
+.footer-spacer {
+    /* balances the grid on desktop */
+}
+
+/* ============================================================
+   COOKIE BANNER
+   ============================================================ */
+.cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #1a1a1a;
+    padding: 15px;
+    z-index: 3000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    border-top: 1px solid #333;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.5);
+    box-sizing: border-box;
+    flex-wrap: wrap;       
+}
+
+.cookie-text {
+    margin: 0;
+    color: white;
+    text-align: center;
+}
+
+.cookie-accept-btn {
+    background-color: #3388ff;
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+/* ============================================================
+   TABLET  (≤ 992px)
+   ============================================================ */
+@media (max-width: 992px) {
+    .header-bar       { padding: 0 12px; gap: 8px; }
+    .header-dropdown  { margin: 0 10px; }
+    .header-logo      { height: 48px; }
+    .header-title     { font-size: 18px; }
+    .legend-toggle-btn{ width: auto; }          
+    .footer-bar       { padding: 12px 16px; }
+}
+
+/* ============================================================
+   MOBILE  (≤ 576px)
+   ============================================================ */
+@media (max-width: 576px) {
+    .header-bar {
+        padding: 6px 8px;
+        gap: 6px;
+        flex-wrap: wrap;
+        min-height: 48px;
+    }
+
+    .header-logo   { height: 36px; margin-right: 6px; }
+    .header-title  { font-size: 15px; }
+
+    /* Hide the "Viewer" title text if space is very tight */
+    /* .header-title { display: none; } */
+
+    .header-dropdown {
+        flex: 1 1 120px;
+        margin: 0 4px;
+        font-size: 12px;
+    }
+
+    .legend-toggle-btn {
+        font-size: 12px;
+        padding: 4px 8px;
+    }
+
+    .legend-container {
+        top: 8px;
+        right: 8px;
+        font-size: 9px;
+        padding: 8px 10px;
+        max-width: calc(100vw - 16px);
+    }
+
+    .info-button {
+        bottom: 16px;
+        left: 10px;
+        height: 28px;
+    }
+
+    /* Footer: stack vertically on mobile */
+    .footer-inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        text-align: center;
+    }
+
+    .footer-eu {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 8px;
+    }
+
+    .footer-eu-logo  { margin-right: 0; margin-bottom: 8px; height: 36px; }
+    .footer-eu-text  { font-size: 11px; }
+    .footer-spacer   { display: none; }
+    .footer-links    { white-space: normal; }
+    .footer-bar      { padding: 12px 8px; font-size: 12px; }
+
+    .popup-content   { min-width: 0; width: 80vw; max-width: 340px; }
+
+    .cookie-banner   { padding: 10px; }
+    .cookie-text     { font-size: 12px; }
+}

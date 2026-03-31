@@ -1,14 +1,14 @@
-from dash import Dash
+from app.custom_dash import CustomDash
 from app.layout import layout
 from app.callbacks import register_callbacks
 
 
 def create_app():
-    app = Dash(
+    app = CustomDash(
         __name__,
         suppress_callback_exceptions=True,
+        title="FERRO Viewer",
     )
-
     app.layout = layout()
     register_callbacks(app)
 

@@ -10,7 +10,6 @@ from app.components.cookies import create_cookie_banner
 from app.components.header import create_header
 from app.components.dropdown import create_dropdown
 from app.components.legend import create_legend_button, create_legend
-from app.components.map import create_map
 from app.components.info_button import create_info_button
 from app.components.footer import create_footer
 
@@ -23,42 +22,40 @@ def layout():
         create_info_modal(),
         create_cookie_banner(),
 
-        # --- 2. Unified Header (Logo + Dropdown + Button) ---
+        # --- 2. Header Bar ---
         html.Div([
             create_header(),
             create_dropdown(),
             create_legend_button()
-
-        ], style={
-            "display": "flex", 
-            "alignItems": "center", 
-            "justifyContent": "space-between", # Distributes items across the bar
-            "padding": "0px 20px", 
-            "flex": "0 0 auto",               # Fixed height based on content
-            "borderBottom": "1px solid #333", # Subtle separator line
-            "backgroundColor": "#121212"
-        }),
+        ], className="header-bar"),
 
         # --- 3. Main Content Area (Map) ---
         html.Div([
             html.Div(
-                id="map-content-container", 
-                style={"height": "100%", "width": "100%", "position": "absolute", "top": 0, "left": 0}
+                id="map-content-container",
+                style={
+                    "height": "100%",
+                    "width": "100%",
+                    "position": "absolute",
+                    "top": 0,
+                    "left": 0
+                }
             ),
             create_info_button(),
             create_legend()
-        ], style={"flex": "1", "position": "relative", "overflow": "hidden"}), 
-
+        ], style={"flex": "1", "position": "relative", "overflow": "hidden"}),
+        
         # --- 4. Footer ---
         create_footer()
+        # --- 2. Unified Header (Logo + Dropdown + Button) ---
 
-    ], style={
-        "backgroundColor": "#121212", 
-        "height": "100vh", 
-        "width": "100%",          # Changed from 100vw to 100% to fix horizontal scroll
-        "display": "flex", 
+        ], style={
+        "backgroundColor": "#121212",
+        "height": "100vh",
+        "width": "100%",
+        "display": "flex",
         "flexDirection": "column",
-        "overflow": "hidden",      # Prevents scrollbars on the main window
+        "overflow": "hidden",
         "padding": "0",
     })
     return layout

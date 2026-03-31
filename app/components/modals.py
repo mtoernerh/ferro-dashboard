@@ -2,16 +2,27 @@
 from dash import html, dcc
 import os
 from pathlib import Path
+
 modal_style = {
     "position": "fixed", "zIndex": "2000", "top": "0", "left": "0",
     "width": "100%", "height": "100%", "backgroundColor": "rgba(0,0,0,0.8)",
-    "display": "none", "justifyContent": "center", "alignItems": "center"
+    "display": "none", "justifyContent": "center", "alignItems": "center",
+    "padding": "16px",           # prevents content touching screen edges on mobile
+    "boxSizing": "border-box",
 }
 
 modal_content_style = {
-    "backgroundColor": "#222", "padding": "20px", "borderRadius": "8px",
-    "width": "60%", "maxWidth": "600px", "color": "white", "position": "relative",
-    "border": "1px solid #444", "maxHeight": "80vh", "overflowY": "auto"
+    "backgroundColor": "#222",
+    "padding": "20px",
+    "borderRadius": "8px",
+    "width": "100%",             # fills the padded modal overlay
+    "maxWidth": "600px",         # caps width on desktop
+    "color": "white",
+    "position": "relative",
+    "border": "1px solid #444",
+    "maxHeight": "85vh",
+    "overflowY": "auto",
+    "boxSizing": "border-box",
 }
 
 ASSETS_PATH = os.path.join(Path(os.path.dirname(__file__)).parent.absolute(), "assets")
@@ -21,7 +32,6 @@ def load_text_file(filename):
     file_path = os.path.join(ASSETS_PATH, filename)
     with open(file_path, "r", encoding="utf-8") as f:
         text = f.read()
-    # Split into paragraphs by double newlines
     paragraphs = [p.strip() for p in text.split("\n\n") if p.strip()]
     return paragraphs
 

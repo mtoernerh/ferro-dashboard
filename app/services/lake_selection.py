@@ -40,7 +40,7 @@ def build_viewport(catchment_feature):
 
     catchment_geom = shape(catchment_feature["geometry"])
 
-    minx, miny, maxx, maxy = catchment_geom.bounds
+    minx, miny, maxx, maxy = catchment_geom.buffer(0.1).bounds
 
     # Leaflet bounds are [[south, west], [north, east]]
     bounds = [
