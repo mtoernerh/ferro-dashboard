@@ -3,6 +3,7 @@ from config import GEOJSON_DIR, TABLES_DIR, ASSET_DIR
 from app.services.data_registry import (
  #   load_catchments,
     build_catchment_index,
+    get_catchment,
     load_lakes,
     load_attributes,
     load_classes,
@@ -16,6 +17,7 @@ def get_app_data():
     """
     lakes_geojson = load_lakes(ASSET_DIR / "lakes.geojson")
     catchments_path = GEOJSON_DIR / "catchments.geojson"
+    get_catchment(GEOJSON_DIR)
     build_catchment_index(catchments_path) 
     return {
         "catchments_path":  GEOJSON_DIR / "catchments.geojson",

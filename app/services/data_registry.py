@@ -49,13 +49,6 @@ def build_catchment_index(path):
 
 #@lru_cache(maxsize=64)
 def load_catchment_by_id(path, lake_id):
-    url = (
-        "https://huggingface.co/datasets/mfth/ferro-dashboard/"
-        "resolve/main/catchments.geojson"
-    )
-
-    path = ensure_file(path, url)
-    
     index = build_catchment_index(path)
     idx = index.get(lake_id)
     if idx is None:
@@ -79,7 +72,14 @@ def load_lakes(path):
     with open(path, encoding="utf-8") as f:
         return json.load(f)
     
+def get_catchment(path):
+    url = (
+        "https://huggingface.co/datasets/mfth/ferro-dashboard/"
+        "resolve/main/catchments.geojson"
+    )
 
+    path = ensure_file(path, url)
+    
 #def load_lake_lookup(path):
 #    url = (
 #        "https://huggingface.co/datasets/mfth/ferro-dashboard/"
