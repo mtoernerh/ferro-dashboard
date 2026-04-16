@@ -17,7 +17,7 @@ def get_app_data():
     """
     lakes_geojson = load_lakes(ASSET_DIR / "lakes.geojson")
     catchments_path = GEOJSON_DIR / "catchments.geojson"
-    get_catchment(GEOJSON_DIR)
+    get_catchment(catchments_path)
     build_catchment_index(catchments_path) 
     return {
         "catchments_path":  GEOJSON_DIR / "catchments.geojson",
