@@ -30,12 +30,12 @@ def build_popup(lake_id, lake_name, lake_area, catchment_area, lake_centroid, fi
                     html.B("ID: "), f"{lake_id}", html.Br(),
                     html.B("Lake Area: "), f"{lake_area:.2f} km²", html.Br(),
                     html.B("Catchment: "), f"{catchment_area:.2f} km²" if catchment_area else "N/A", html.Br(),
-                    html.Small(f"Coords: {lake_centroid.y:.3f}, {lake_centroid.x:.3f}",
+                    html.Small(f"Coords: {lake_centroid[1]:.3f}, {lake_centroid[0]:.3f}",
                                style={"color": "gray"})
                 ])
             ], className="popup-content")
         ],
-        position=[lake_centroid.y, lake_centroid.x],
+        position=[lake_centroid[1], lake_centroid[0]],
         maxWidth=500,
         autoClose=False,
         autoPan=True,

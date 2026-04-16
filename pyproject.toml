@@ -9,6 +9,7 @@ dependencies = [
     "shapely",
     "pyproj",
 	"plotly",
+    "fiona",
 ]
 
 [build-system]

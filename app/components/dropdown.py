@@ -11,7 +11,7 @@ def create_dropdown():
                     "label": f["properties"]["Name"],
                     "value": f["properties"]["id_str"]
                 }
-                for f in data["lakes_geojson"]["features"]
+                for f in data["lakes_lookup"].values() 
             ],
             placeholder="Search for a lake...",
             style={"width": "100%", "color": "#ffffff"}

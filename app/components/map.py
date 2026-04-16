@@ -1,19 +1,17 @@
 import dash_leaflet as dl
 from dash import html
-from app.services.app_data import get_app_data
 from dash_extensions.javascript import Namespace
 
 ns = Namespace("dashExtensions", "my_namespace")
 style_handle = ns("lake_style")
 
 def create_map():
-    data = get_app_data()
     classes = [1, 2, 3, 4]
     colorscale = ["#00B0F0", "#92D050", "#FFFF00", "#FF0000"]
     style = dict(weight=2, opacity=1, color="white", dashArray="3", fillOpacity=0.7)
 
     lakes_layer = dl.GeoJSON(
-        data=data["lakes_geojson"],
+        url="/assets/lakes.geojson",
         id="lakes",
         style=style_handle,
         zoomToBoundsOnClick=False,
@@ -21,6 +19,7 @@ def create_map():
         hideout=dict(colorscale=colorscale, classes=classes, style=style, colorProp="Lake Type"),
         interactive=True
     )
+    
     catchment_layer = dl.LayerGroup(id="selected-catchment")
 
     map_view = dl.Map(

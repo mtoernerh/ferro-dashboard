@@ -13,3 +13,4 @@ dependencies:
   - pyarrow
   - plotly
   - waitress
+  - fiona

@@ -1,7 +1,5 @@
 from dash import Output, Input, no_update, ctx
 import dash_leaflet as dl
-from pyproj import Transformer
-
 from app.services.lake_selection import (
     find_lake_feature,
     compute_lake_metrics,
@@ -21,9 +19,7 @@ def register_map_callbacks(app):
         prevent_initial_call=True,
     )
     def update_on_click_or_dropdown(click_data, selected_id):
-        project = Transformer.from_crs("EPSG:4326", "EPSG:25832", always_xy=True).transform
         data = get_app_data()
-
         triggered = ctx.triggered_id
 
         lake_feature = find_lake_feature(
@@ -32,7 +28,6 @@ def register_map_callbacks(app):
             selected_id,
             data["lakes_lookup"],
         )
-
         if not lake_feature:
             return no_update, no_update
 
@@ -43,7 +38,8 @@ def register_map_callbacks(app):
             lake_area,
             catchment_feature,
             catchment_area,
-        ) = compute_lake_metrics(lake_feature, data["catchment_by_id"], project)
+            bounds,
+        ) = compute_lake_metrics(lake_feature, data["catchments_path"], data["lake_metrics"])
 
         # ---- dataframe lookups ----
         attributes_sel_df = data["attributes_df"][data["attributes_df"]["ID"] == lake_id].iloc[0]
@@ -53,7 +49,7 @@ def register_map_callbacks(app):
             .drop("ID")
             .to_dict()
         )
-
+        lake_centroid = (float(lake_centroid[0]), float(lake_centroid[1]))
         fig = generate_lake_sunburst(attributes_sel_df, classes_sel_dict)
         popup = build_popup(lake_id, lake_name, lake_area, catchment_area, lake_centroid, fig)
         map_layers = [popup]
@@ -70,6 +66,6 @@ def register_map_callbacks(app):
                 )
             )
 
-        viewport = build_viewport(catchment_feature)
+        viewport = build_viewport(bounds)
 
         return map_layers, viewport

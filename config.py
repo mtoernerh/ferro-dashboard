@@ -9,3 +9,4 @@ DATA_DIR = Path(
 
 GEOJSON_DIR = DATA_DIR / "geojson"
 TABLES_DIR = DATA_DIR / "tables"
+ASSET_DIR = BASE_DIR / "app" / "assets"

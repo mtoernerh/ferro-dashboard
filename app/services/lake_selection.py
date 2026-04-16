@@ -1,6 +1,4 @@
-# Import
-from shapely.geometry import shape
-from shapely.ops import transform
+from app.services.data_registry import load_catchment_by_id
 
 def find_lake_feature(triggered_id, click_data, selected_id, lakes_lookup):
 
@@ -15,38 +13,23 @@ def find_lake_feature(triggered_id, click_data, selected_id, lakes_lookup):
 
     return None
 
-def compute_lake_metrics(lake_feature, catchment_by_id, crs):
-
-    lake_id = lake_feature["properties"].get("id_str")
+def compute_lake_metrics(lake_feature, catchments_path, lake_metrics_df):
+    lake_id   = lake_feature["properties"]["id_str"]
     lake_name = lake_feature["properties"].get("Name", "Unknown Lake")
-    lake_geom = shape(lake_feature["geometry"])
-    lake_centroid = lake_geom.centroid
-    lake_area = transform(crs, lake_geom).area / 1e6
+    
+    row = lake_metrics_df[lake_metrics_df["id_str"] == lake_id].iloc[0]
+    
+    lake_centroid   = (row["centroid_lon"], row["centroid_lat"])
+    lake_area       = row["lake_area_km2"]
+    catchment_area  = row["catch_area_km2"]   # NaN if no catchment
+    bounds          = row["bounds"]            # pre-computed [[S,W],[N,E]]
 
-    catchment_feature = catchment_by_id.get(lake_id)
+    catchment_feature = load_catchment_by_id(catchments_path, lake_id)
+    
+    return lake_id, lake_name, lake_centroid, lake_area, catchment_feature, catchment_area, bounds
 
-    if catchment_feature:
-        catchment_geom = shape(catchment_feature["geometry"])
-        catchment_area = transform(crs, catchment_geom).area / 1e6
-    else:
-        catchment_area = None
-
-    return lake_id, lake_name, lake_centroid, lake_area, catchment_feature, catchment_area
-
-def build_viewport(catchment_feature):
-
-    if not catchment_feature:
+def build_viewport(bounds):
+    if bounds is None:
         return None
-
-    catchment_geom = shape(catchment_feature["geometry"])
-
-    minx, miny, maxx, maxy = catchment_geom.buffer(0.1).bounds
-
-    # Leaflet bounds are [[south, west], [north, east]]
-    bounds = [
-        [miny, minx],
-        [maxy, maxx]
-    ]
-
     return {"bounds": bounds, "transition": "flyToBounds"}
 
