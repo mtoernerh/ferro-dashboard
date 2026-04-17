@@ -1,5 +1,6 @@
 import json
 import pandas as pd
+from pathlib import Path
 import os
 import urllib.request
 import fiona
@@ -23,43 +24,34 @@ def ensure_file(path, url):
     return path
 
 @lru_cache(maxsize=1)
-def build_catchment_index(path):
-    """Build {id: fiona_integer_index} once. Stores only ints, not geometries."""
+def build_catchment_index(path: Path):
     index = {}
-    with fiona.open(str(path)) as src:
+    with fiona.open(path) as src:  # fiona accepts Path directly
         for i, feature in enumerate(src):
             index[feature["properties"]["id"]] = i
     return index
 
-#def load_catchments(path):
-#    url = (
-#        "https://huggingface.co/datasets/mfth/ferro-dashboard/"
-#        "resolve/main/catchments.geojson"
-#    )
-#
-#    path = ensure_file(path, url)
-#    with open(path, encoding="utf-8") as f:
-#        geojson = json.load(f)
-#
-#
-#    return {
-#        f["properties"]["id"]: f
-#        for f in geojson["features"]
-#    }
-
-#@lru_cache(maxsize=64)
-def load_catchment_by_id(path, lake_id):
+@lru_cache(maxsize=256)
+def load_catchment_by_id(path: Path, lake_id: str):
     index = build_catchment_index(path)
     idx = index.get(lake_id)
     if idx is None:
         return None
-    with fiona.open(str(path)) as src:
+    with fiona.open(path) as src:
         feature = src[idx]
         return {
             "type": "Feature",
             "geometry": dict(feature["geometry"]),
             "properties": dict(feature["properties"]),
         }
+    
+def ensure_catchment_file(path):
+    url = (
+        "https://huggingface.co/datasets/mfth/ferro-dashboard/"
+        "resolve/main/catchments.fgb"
+    )
+    path = ensure_file(path, url)
+    return path
 
 def load_lakes(path):
     url = (
@@ -72,13 +64,6 @@ def load_lakes(path):
     with open(path, encoding="utf-8") as f:
         return json.load(f)
     
-def get_catchment(path):
-    url = (
-        "https://huggingface.co/datasets/mfth/ferro-dashboard/"
-        "resolve/main/catchments.geojson"
-    )
-
-    path = ensure_file(path, url)
     
 #def load_lake_lookup(path):
 #    url = (
