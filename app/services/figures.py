@@ -26,12 +26,25 @@ hwsd_legend = {
     7: "Very poorly drained",
 }
 
-def color_from_class(cls):
+def color_from_class_two(cls):
     return {
-        1: '#00B0F0',
-        2: '#92D050',
-        3: '#FFFF00',
-        4: '#FF0000',
+        1: '#fff2cc',
+        2: '#ffd966',
+        3: '#bf9000',
+        4: '#7f6000',
+        "Type 1": '#00B0F0',
+        "Type 2": '#92D050',
+        "Type 3": '#FFFF00',
+        "Type 4": '#FF0000',
+        0: '#d9d9d9'
+    }.get(cls, '#d9d9d9')
+
+def color_from_class_one(cls):
+    return {
+        1: '#dae3f3',
+        2: '#8faadc',
+        3: '#2f5597',
+        4: '#203864',
         "Type 1": '#00B0F0',
         "Type 2": '#92D050',
         "Type 3": '#FFFF00',
@@ -78,10 +91,10 @@ def generate_lake_sunburst(df, classes):
     }
 
     # 4. Colors
-    type_color = color_from_class(classes.get("Lake Type"))
+    type_color = color_from_class_one(classes.get("Lake Type"))
     layer_colors = {
-        "Inherent Sensitivity": color_from_class(classes.get("Inherent Sensitivity")),
-        "Nutrient Supply": color_from_class(classes.get("Nutrient Supply"))
+        "Inherent Sensitivity": color_from_class_one(classes.get("Inherent Sensitivity")),
+        "Nutrient Supply": color_from_class_two(classes.get("Nutrient Supply"))
     }
 
     # 5. Build Plot Data
@@ -111,7 +124,11 @@ def generate_lake_sunburst(df, classes):
         names.append(key.replace(" ", "<br>")) # Line break for visual clarity
         parents.append(group)
         values.append(1)
-        colors.append(color_from_class(class_val))
+        if group == "Inherent Sensitivity":
+            colors.append(color_from_class_one(class_val))
+        else:
+            colors.append(color_from_class_two(class_val))
+
         
         # Generate Hover Text
         if key in val_map:

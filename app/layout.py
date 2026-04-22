@@ -15,21 +15,21 @@ from app.components.footer import create_footer
 
 def layout():
     layout = html.Div([
-        # --- 1. Invisible Logic Components ---
+        # Invisible Logic Components
         create_cookie_store(),
         create_imprint_modal(),
         create_privacy_modal(),
         create_info_modal(),
         create_cookie_banner(),
 
-        # --- 2. Header Bar ---
+        # Header Bar
         html.Div([
             create_header(),
             create_dropdown(),
             create_legend_button()
         ], className="header-bar"),
 
-        # --- 3. Main Content Area (Map) ---
+        # Main Content Area (Map)
         html.Div([
             html.Div(
                 id="map-content-container",
@@ -45,9 +45,9 @@ def layout():
             create_legend()
         ], style={"flex": "1", "position": "relative", "overflow": "hidden"}),
         
-        # --- 4. Footer ---
+        # Footer
         create_footer()
-        # --- 2. Unified Header (Logo + Dropdown + Button) ---
+        # Unified Header (Logo + Dropdown + Button)
 
         ], style={
         "backgroundColor": "#121212",

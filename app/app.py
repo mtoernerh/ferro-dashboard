@@ -7,7 +7,7 @@ def create_app():
     app = CustomDash(
         __name__,
         suppress_callback_exceptions=True,
-        title="FERRO Viewer",
+        title="Lake Sensitivity",
     )
     app.layout = layout()
     register_callbacks(app)
