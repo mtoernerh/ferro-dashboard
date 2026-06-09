@@ -7,7 +7,7 @@ def create_app():
     app = CustomDash(
         __name__,
         suppress_callback_exceptions=True,
-        title="Lake Sensitivity",
+        title="Lake Risk",
     )
     app.layout = layout()
     register_callbacks(app)
